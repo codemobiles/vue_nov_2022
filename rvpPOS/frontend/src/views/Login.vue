@@ -1,20 +1,62 @@
 <template>
-  <a-card hoverable style="width: 240px">
-    <template #cover>
-      <img alt="example" src="@/assets/03-vuejs-login.png" />
-    </template>
+  <div>
+    <a-card
+      hoverable
+      style="
+        box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 5px 0px;
+        width: 300px;
+        height: 500px;
+      "
+    >
+      <template #cover>
+        <img alt="example" src="@/assets/03-vuejs-login.png" />
+      </template>
 
-    <form @submit="handleLogin()">
-      <input type="text" placeholder="Username" v-model="user.username" />
-      <br />
-      <input type="password" placeholder="Password" v-model="user.password" />
-      <br />
-      <span>{{ user }}</span
-      ><br />
-      <button type="submit">Login</button>
-      <button type="button" @click="handleReset()">Reset</button>
-    </form>
-  </a-card>
+      <h1 className="text-2xl font-bold pb-3">Login</h1>
+
+      <a-form
+        layout="vertical"
+        :model="formState"
+        @finish="handleFinish"
+        @finishFailed="handleFinishFailed"
+      >
+        <a-form-item>
+          <a-input v-model:value="formState.username" placeholder="Username">
+            <template #prefix
+              ><UserOutlined style="color: rgba(0, 0, 0, 0.25)"
+            /></template>
+          </a-input>
+        </a-form-item>
+        <a-form-item>
+          <a-input
+            v-model:value="formState.password"
+            type="password"
+            placeholder="Password"
+          >
+            <template #prefix
+              ><LockOutlined style="color: rgba(0, 0, 0, 0.25)"
+            /></template>
+          </a-input>
+        </a-form-item>
+        <a-form-item>
+          <a-space direction="vertical" style="width: 100%" size="small">
+            <a-button block type="primary" html-type="submit">
+              Log in
+            </a-button>
+
+            <a-button
+              block
+              type="default"
+              html-type="button"
+              @click="$router.push('/register')"
+            >
+              Register
+            </a-button>
+          </a-space>
+        </a-form-item>
+      </a-form>
+    </a-card>
+  </div>
 </template>
 
 <script lang="ts">
