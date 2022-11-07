@@ -1,5 +1,5 @@
 <template>
-  <div>Register</div>
+  <div>CodeMobiles</div>
 </template>
 
 <script>
