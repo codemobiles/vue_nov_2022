@@ -1,7 +1,3 @@
-# tmp
-
-https://drive.google.com/file/d/175QqyWjbaAwYPv4GrvsYLxk0FJQ6eq9_/view?usp=share_link
-
 # new project
 
 https://github.com/vuejs/create-vue

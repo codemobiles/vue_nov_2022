@@ -1,9 +1,16 @@
 <template>
   <div>Header</div>
+  <button @click="handleToggle()">Toggle</button>
 </template>
 
-<script>
-export default {};
+<script lang="ts">
+import { ref } from "vue";
+export default {
+  setup() {
+    function handleToggle() {}
+    return { handleToggle };
+  },
+};
 </script>
 
 <style></style>
