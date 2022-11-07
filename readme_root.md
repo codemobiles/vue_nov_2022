@@ -5,3 +5,10 @@ https://drive.google.com/file/d/1Nu_NPizfSTdDYZP3rli1r8DcYq2VLhB1/view?usp=share
 # Setup dev tools
 
 - octotree : https://chrome.google.com/webstore/detail/octotree-github-code-tree/bkhaagjahfmjljalopjnoealnfndnagc
+- node --veresion
+- vscode
+
+# new project
+
+https://github.com/vuejs/create-vue
+npm create vue@3
