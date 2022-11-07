@@ -2,7 +2,7 @@
   <a-layout style="height: 100%">
     <Menu :version="version" />
     <a-layout>
-      <Header />
+      <Header @add="handleAdd()" />
       <a-layout-content>
         <Content />
       </a-layout-content>
@@ -20,7 +20,11 @@ export default {
   setup() {
     const version = ref(1);
 
-    return { version };
+    function handleAdd() {
+      version.value = version.value + 1;
+    }
+
+    return { version, handleAdd };
   },
 };
 </script>
