@@ -5,10 +5,10 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 export default {
   setup(props) {
-    const tmp1 = 1000;
+    const tmp1: number = 1000;
     return { tmp1 };
   },
 };
