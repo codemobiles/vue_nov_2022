@@ -13,7 +13,6 @@
       </template>
 
       <h1 className="text-2xl font-bold pb-3">Login</h1>
-      <LogoutOutlined />
 
       <a-form
         layout="vertical"
