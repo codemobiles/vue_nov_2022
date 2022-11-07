@@ -4,7 +4,7 @@
     <div>{{ tmp1 }}</div>
     <div>{{ tmp2 }}</div>
     <div>{{ tmp3 }}</div>
-    <button @click="handleClickMe">ClickMe</button>
+    <button @click="handleClickMe()">ClickMe {{ count1 }}</button>
   </div>
 </template>
 
@@ -14,12 +14,13 @@ export default {
     const tmp1: number = 1000;
     const tmp2: string = "Lek";
     const tmp3 = "VueJS";
+    let count1 = 0;
 
     function handleClickMe() {
-      alert("Hey");
+      count1 = count1 + 1;
     }
 
-    return { tmp1, tmp2, handleClickMe };
+    return { tmp1, tmp2, count1, handleClickMe };
   },
 };
 </script>
