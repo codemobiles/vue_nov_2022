@@ -18,6 +18,7 @@ export default {
 
     function handleClickMe() {
       count1 = count1 + 1;
+      console.log("count1: " + count1.toString());
     }
 
     return { tmp1, tmp2, count1, handleClickMe };
