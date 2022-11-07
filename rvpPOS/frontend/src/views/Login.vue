@@ -13,6 +13,7 @@
       </template>
 
       <h1 className="text-2xl font-bold pb-3">Login</h1>
+      <LogoutOutlined />
 
       <a-form
         layout="vertical"
@@ -61,7 +62,14 @@
 
 <script lang="ts">
 import { reactive } from "vue";
+import {
+  UserOutlined,
+  LockOutlined,
+  LogoutOutlined,
+} from "@ant-design/icons-vue";
+
 export default {
+  components: { UserOutlined, LockOutlined, LogoutOutlined },
   setup() {
     const formState = reactive({ username: "admin", password: "5555" });
 
