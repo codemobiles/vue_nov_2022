@@ -1,10 +1,7 @@
 <template>
   <a-card hoverable style="width: 240px">
     <template #cover>
-      <img
-        alt="example"
-        src="https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png"
-      />
+      <img alt="example" src="@/assets/03-vuejs-login.png" />
     </template>
 
     <form @submit="handleLogin()">

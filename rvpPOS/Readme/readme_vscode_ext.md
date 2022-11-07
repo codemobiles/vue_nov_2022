@@ -10,6 +10,7 @@ code --install-extension christian-kohler.path-intellisense
 code --install-extension zignd.html-css-class-completion
 code --install-extension formulahendry.auto-close-tag
 code --install-extension mongodb.mongodb-vscode
+code --install-extension ant-design-vue.vscode-ant-design-vue-helper
 ```
 
 # mongo vscode extension

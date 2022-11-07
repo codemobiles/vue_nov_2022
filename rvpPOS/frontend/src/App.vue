@@ -1,8 +1,7 @@
 <template>
-  <div>
-    <h1>Page</h1>
-    <RouterView />
-  </div>
+  <a-layout style="height: 100%">
+    <Menu />
+  </a-layout>
 </template>
 
 <script lang="ts">
