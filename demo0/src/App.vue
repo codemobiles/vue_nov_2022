@@ -2,6 +2,7 @@
   <div>
     <div>1234</div>
     <div>{{ tmp1 }}</div>
+    <div>{{ tmp2 }}</div>
   </div>
 </template>
 
@@ -9,7 +10,8 @@
 export default {
   setup(props) {
     const tmp1: number = 1000;
-    return { tmp1 };
+    const tmp2: string = "Lek";
+    return { tmp1, tmp2 };
   },
 };
 </script>
