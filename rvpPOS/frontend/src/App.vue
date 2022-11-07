@@ -1,6 +1,6 @@
 <template>
   <a-layout style="height: 100%">
-    <Menu />
+    <Menu version="1.0" />
     <a-layout>
       <Header />
       <a-layout-content>
