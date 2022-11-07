@@ -1,7 +1,8 @@
 <template>
- <div>
-  
- </div>
+  <div>
+    <h1>Page</h1>
+    <RouterView />
+  </div>
 </template>
 
 <script lang="ts">
