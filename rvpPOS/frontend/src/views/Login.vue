@@ -63,18 +63,18 @@
 import { reactive } from "vue";
 export default {
   setup() {
-    const user = reactive({ username: "admin", password: "5555" });
+    const formState = reactive({ username: "admin", password: "5555" });
 
-    function handleLogin() {
-      alert(JSON.stringify(user));
+    function handleFinish() {
+      alert(JSON.stringify(formState));
     }
 
-    function handleReset() {
-      user.username = "";
-      user.password = "";
+    function handleFinishFailed() {
+      formState.username = "";
+      formState.password = "";
     }
 
-    return { user, handleLogin, handleReset };
+    return { formState, handleFinish, handleFinishFailed };
   },
 };
 </script>
