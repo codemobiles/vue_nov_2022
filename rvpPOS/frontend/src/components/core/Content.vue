@@ -1,13 +1,5 @@
 <template>
-  <div
-    :style="{
-      padding: '24px',
-      height: '100%',
-      background: '#fff',
-      display: 'flex',
-      justifyContent: 'center',
-    }"
-  >
+  <div class="flex flex-col justify-center items-center h-full bg-white p-7">
     <router-view />
   </div>
 </template>
