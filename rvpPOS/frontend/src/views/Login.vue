@@ -1,17 +1,23 @@
 <template>
-  <div>
-    <h1>Login</h1>
-    <form>
+  <a-card hoverable style="width: 240px">
+    <template #cover>
+      <img
+        alt="example"
+        src="https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png"
+      />
+    </template>
+
+    <form @submit="handleLogin()">
       <input type="text" placeholder="Username" v-model="user.username" />
       <br />
       <input type="password" placeholder="Password" v-model="user.password" />
       <br />
       <span>{{ user }}</span
       ><br />
-      <button type="submit" @click="handleLogin()">Login</button>
+      <button type="submit">Login</button>
       <button type="button" @click="handleReset()">Reset</button>
     </form>
-  </div>
+  </a-card>
 </template>
 
 <script lang="ts">
