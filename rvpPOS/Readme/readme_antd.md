@@ -6,8 +6,10 @@
 ```ts
 import "ant-design-vue/dist/antd.css"; // or 'ant-design-vue/dist/antd.less'
 import "./assets/main.css";
+import Antd from "ant-design-vue";
 ....
 ..
+
 app.use(Antd);
 
 ```
