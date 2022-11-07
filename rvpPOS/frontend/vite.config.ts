@@ -8,6 +8,18 @@ export default defineConfig({
   server: {
     port: 4200,
   },
+  css: {
+    preprocessorOptions: {
+      less: {
+        modifyVars: {
+          "primary-color": "#1DA57A",
+          "link-color": "#1DA57A",
+          "border-radius-base": "10px",
+        },
+        javascriptEnabled: true,
+      },
+    },
+  },
   plugins: [vue()],
   resolve: {
     alias: {
