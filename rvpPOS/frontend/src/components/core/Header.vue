@@ -6,8 +6,11 @@
 <script lang="ts">
 import { ref } from "vue";
 export default {
-  setup() {
-    function handleToggle() {}
+  emits: ["add"],
+  setup(props, { emit }) {
+    function handleToggle() {
+      emit("add");
+    }
     return { handleToggle };
   },
 };

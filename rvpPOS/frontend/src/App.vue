@@ -4,7 +4,6 @@
     <a-layout>
       <Header />
       <a-layout-content>
-        <button @click="handleAdd()">Add</button>
         <Content />
       </a-layout-content>
     </a-layout>
@@ -21,11 +20,7 @@ export default {
   setup() {
     const version = ref(1);
 
-    function handleAdd() {
-      version.value = version.value + 1;
-    }
-
-    return { version, handleAdd };
+    return { version };
   },
 };
 </script>
