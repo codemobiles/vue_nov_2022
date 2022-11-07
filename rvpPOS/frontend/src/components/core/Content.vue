@@ -1,14 +1,9 @@
 <template>
-  <div
-    :style="{
-      padding: '24px',
-      height: '100%',
-      background: '#fff',
-      display: 'flex',
-      justifyContent: 'center',
-    }"
-  >
-    <router-view />
+  <div style="display: flex; flex-direction: column">
+    <!-- <RouterView /> -->
+    <div>111</div>
+    <div>222</div>
+    <div>333</div>
   </div>
 </template>
 
