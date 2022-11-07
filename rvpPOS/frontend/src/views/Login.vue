@@ -8,7 +8,8 @@
       <br />
       <span>{{ user }}</span
       ><br />
-      <button>Login</button>
+      <button type="submit" @click="handleLogin()">Login</button>
+      <button type="button" @click="handleReset()">Reset</button>
     </form>
   </div>
 </template>
@@ -18,7 +19,17 @@ import { reactive } from "vue";
 export default {
   setup() {
     const user = reactive({ username: "admin", password: "5555" });
-    return { user };
+
+    function handleLogin() {
+      alert(JSON.stringify(user));
+    }
+
+    function handleReset() {
+      user.username = "";
+      user.password = "";
+    }
+
+    return { user, handleLogin, handleReset };
   },
 };
 </script>
