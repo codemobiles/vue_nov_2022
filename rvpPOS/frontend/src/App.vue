@@ -12,8 +12,10 @@
 
 <script lang="ts">
 import Menu from "@/components/core/Menu.vue";
+import Header from "@/components/core/Header.vue";
+import Content from "@/components/core/Content.vue";
 export default {
-  components: { Menu },
+  components: { Menu, Header, Content },
   setup() {},
 };
 </script>
