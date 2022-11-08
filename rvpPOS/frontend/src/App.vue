@@ -1,8 +1,8 @@
 <template>
   <a-layout style="height: 100%">
-    <Menu :version="version" v-model:collapsed="collapsed" />
+    <Menu v-model:collapsed="collapsed" />
     <a-layout>
-      <Header @add="handleAdd()" />
+      <Header v-model:collapsed="collapsed" />
       <a-layout-content>
         <Content />
       </a-layout-content>
@@ -18,15 +18,9 @@ import Content from "@/components/core/Content.vue";
 export default {
   components: { Menu, Header, Content },
   setup() {
-    const version = ref(1);
     const collapsed = ref<boolean>(false);
 
-    function handleAdd() {
-      version.value = version.value + 1;
-      collapsed.value = !collapsed.value;
-    }
-
-    return { version, collapsed, handleAdd };
+    return { collapsed };
   },
 };
 </script>
