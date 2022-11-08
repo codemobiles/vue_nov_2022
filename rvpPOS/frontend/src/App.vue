@@ -1,6 +1,6 @@
 <template>
   <a-layout style="height: 100%">
-    <Menu :version="version" />
+    <Menu :version="version" v-model:collapsed="collapsed" />
     <a-layout>
       <Header @add="handleAdd()" />
       <a-layout-content>
@@ -19,12 +19,14 @@ export default {
   components: { Menu, Header, Content },
   setup() {
     const version = ref(1);
+    const collapsed = ref<boolean>(false);
 
     function handleAdd() {
       version.value = version.value + 1;
+      collapsed.value = !collapsed.value;
     }
 
-    return { version, handleAdd };
+    return { version, collapsed, handleAdd };
   },
 };
 </script>
