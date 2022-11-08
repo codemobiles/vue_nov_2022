@@ -15,7 +15,9 @@ https://segmentfault.com/a/1190000041864625/en
 
 ## vuejs
 
+```
 yarn add ant-design-vue @ant-design/icons-vue axios less chart.js @j-t-mcc/vue3-chartjs chartjs-plugin-datalabels chartjs-plugin-zoom url-join @types/url-join dayjs numeral vuex vue-router
+```
 
 ## tailwind
 
