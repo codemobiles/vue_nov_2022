@@ -20,4 +20,8 @@ export class UserController {
       return { result: "nok", message: "invalid data" };
     }
   }
+
+  login(req: TypedBodyRequest<Users>, response, next) {
+    return { user: req.body };
+  }
 }
