@@ -10,6 +10,10 @@ AppDataSource.initialize()
     const app = express();
     app.use(bodyParser.json());
 
+    app.get("/test", (req, res) => {
+      res.json({ result: "test" });
+    });
+
     // register express routes from defined application routes
     Routes.forEach((route) => {
       (app as any)[route.method](
@@ -37,7 +41,7 @@ AppDataSource.initialize()
     // ...
 
     // start express server
-    app.listen(3000);
+    app.listen(8081);
 
     console.log(
       "Express server has started on port 3000. Open http://localhost:3000/users to see results"
