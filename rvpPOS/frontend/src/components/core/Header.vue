@@ -36,7 +36,6 @@ import {
   LogoutOutlined,
 } from "@ant-design/icons-vue";
 import { defineComponent, ref } from "vue";
-import store from "./../../store";
 
 export default defineComponent({
   props: ["collapsed"],
@@ -52,7 +51,7 @@ export default defineComponent({
         emit("update:collapsed", !props.collapsed);
       },
       onClickLogOff: function () {
-        store.dispatch("doLogout");
+        // store.dispatch("doLogout");
       },
     };
   },
