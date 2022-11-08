@@ -21,7 +21,33 @@ export class UserController {
     }
   }
 
-  login(req: TypedBodyRequest<Users>, response, next) {
-    return { user: req.body };
+  async login(req: TypedBodyRequest<Users>, res, next) {
+    try {
+      const { username, password } = req.body;
+
+      let doc = await this.userRepository.findOne({
+        where: { username },
+      });
+
+      if (doc) {
+        let isPasswordValid = await bcrypt.compare(password, doc.password);
+        if (isPasswordValid) {
+          const payload = {
+            id: doc._id,
+            level: doc.level,
+            username: doc.username,
+          };
+          let token = "1234"; //jwt.sign(payload);
+
+          res.json({ result: "ok", token, message: "success" });
+        } else {
+          res.json({ result: "nok", message: "invalid password" });
+        }
+      } else {
+        res.json({ result: "nok", message: "invalid username" });
+      }
+    } catch (error) {
+      res.json({ result: "nok", error });
+    }
   }
 }
