@@ -2,6 +2,7 @@ import { Users } from "../entity/User";
 import { AppDataSource } from "../data-source";
 import { TypedBodyRequest } from "../types/Request.types";
 import { savedValue } from "../utils/cm-util";
+import * as bcrypt from "bcryptjs";
 
 export class UserController {
   private userRepository = AppDataSource.getMongoRepository(Users);
