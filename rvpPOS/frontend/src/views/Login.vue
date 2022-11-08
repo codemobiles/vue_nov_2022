@@ -66,14 +66,19 @@ import {
   LockOutlined,
   LogoutOutlined,
 } from "@ant-design/icons-vue";
+import axios from "axios";
 
 export default {
   components: { UserOutlined, LockOutlined, LogoutOutlined },
   setup() {
-    const formState = reactive({ username: "admin", password: "5555" });
+    const formState = reactive({ username: "admin", password: "1234" });
 
-    function handleFinish() {
-      alert(JSON.stringify(formState));
+    async function handleFinish() {
+      const result = await axios.post(
+        "http://localhost:8081/api/v2/login",
+        formState
+      );
+      alert(JSON.stringify(result));
     }
 
     function handleFinishFailed() {
