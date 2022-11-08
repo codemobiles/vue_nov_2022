@@ -1,3 +1,7 @@
+# live share
+
+https://prod.liveshare.vsengsaas.visualstudio.com/join?7C3451D14BA9E05EEB8939BCB9578BA9227B
+
 # new project
 
 https://github.com/vuejs/create-vue
