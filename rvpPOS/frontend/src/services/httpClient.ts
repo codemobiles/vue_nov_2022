@@ -7,7 +7,7 @@ import {
 } from "@/services/constants";
 import router from "@/router";
 import join from "url-join";
-import store from "@/store";
+// import store from "@/store";
 
 const isAbsoluteURLRegex = /^(?:\w+:)\/\//;
 
@@ -30,7 +30,7 @@ axios.interceptors.response.use(
   },
   (error) => {
     console.log(JSON.stringify(error, undefined, 2));
-    store.dispatch("doLogout");
+    // store.dispatch("doLogout");
     if (axios.isCancel(error)) {
       return Promise.reject(error);
     } else if (!error.response) {
