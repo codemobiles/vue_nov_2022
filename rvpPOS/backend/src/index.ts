@@ -10,14 +10,14 @@ AppDataSource.initialize()
     const app = express();
     app.use(bodyParser.json());
 
-    app.get("/test", (req, res) => {
+    app.get("/api/v2/test", (req, res) => {
       res.json({ result: "test" });
     });
 
     // register express routes from defined application routes
     Routes.forEach((route) => {
       (app as any)[route.method](
-        route.route,
+        "/api/v2" + route.route,
         (req: Request, res: Response, next: Function) => {
           const result = new (route.controller as any)()[route.action](
             req,
