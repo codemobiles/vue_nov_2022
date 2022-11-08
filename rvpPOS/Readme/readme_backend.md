@@ -20,15 +20,16 @@ tsc --init (to create tsconfig.json)
 edit package.json
 yarn start
 
-sudo npm i -g pm2
+- sudo npm i -g pm2
 
 # advance ecosystem
 
-pm2 init simple
-pm2 start ecosystem.config.js
+- pm2 init simple
+- pm2 start ecosystem.config.js
 
 # ecosystem.config.js
 
+```
 module.exports = {
 apps: [
 {
@@ -40,5 +41,6 @@ node_args: "-r dotenv/config",
 };
 
 "scripts": {
-"build": "tsc && cp \*.key .env ecosystem.config.js ./build",  
+"build": "tsc && cp \*.key .env ecosystem.config.js ./build",
 }
+```
