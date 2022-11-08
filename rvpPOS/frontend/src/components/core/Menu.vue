@@ -1,5 +1,4 @@
 <template>
-  <span>version: {{ version }}</span>
   <a-layout-sider
     v-model:collapsed="collapsed"
     :width="270"
@@ -93,7 +92,7 @@ import {
 } from "@ant-design/icons-vue";
 import { useRouter, useRoute } from "vue-router";
 export default defineComponent({
-  props: ["collapsed", "version"],
+  props: ["collapsed"],
   emits: ["update:collapsed"],
   components: {
     CodepenOutlined,
