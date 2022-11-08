@@ -16,3 +16,7 @@ https://www.mongodb.com/try/download/shell
 # mongo db tools
 
 - https://www.mongodb.com/try/download/database-tools
+
+# mongorestore example
+
+- mongorestore -d demopos .../vue_nov_2022/rvpPOS/backend/dummy_db_cmpos
