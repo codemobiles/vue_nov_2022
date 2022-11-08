@@ -67,6 +67,7 @@ import {
   LogoutOutlined,
 } from "@ant-design/icons-vue";
 import httpClient from "@/services/httpClient";
+import store from "@/store";
 
 export default {
   components: { UserOutlined, LockOutlined, LogoutOutlined },
@@ -74,8 +75,10 @@ export default {
     const formState = reactive({ username: "admin", password: "1234" });
 
     async function handleFinish() {
-      const result = await httpClient.post("/login", formState);
-      alert(JSON.stringify(result));
+      store.dispatch({ type: "doLogin", ...formState });
+
+      // const result = await httpClient.post("/login", formState);
+      // alert(JSON.stringify(result));
     }
 
     function handleFinishFailed() {
