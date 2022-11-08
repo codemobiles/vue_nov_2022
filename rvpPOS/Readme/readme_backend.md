@@ -7,8 +7,9 @@ tsc --init (to create tsconfig.json)
 
 # new project typescript with typeorm
 
-https://www.tutorialspoint.com/typeorm/typeorm_working_with_mongodb.htm
-npx typeorm init --name backend --database mongodb --express
+### https://www.tutorialspoint.com/typeorm/typeorm_working_with_mongodb.htm
+
+- npx typeorm init --name backend --database - mongodb --express
 
 # to run and populate collection
 
