@@ -12,9 +12,11 @@ npx typeorm init --name backend --database mongodb --express
 
 # to run and populate collection
 
+```
 npm i -g yarn
 yarn add express bcryptjs cors formidable fs-extra jsonwebtoken onesignal-node typescript
 yarn add @types/bcryptjs @types/jsonwebtoken @types/formidable @types/fs-extra @types/cors -D
+```
 
 edit package.json
 yarn start

@@ -1,11 +1,12 @@
 import { Users } from "../entity/User";
 import { AppDataSource } from "../data-source";
 import { TypedBodyRequest } from "../types/Request.types";
+import { savedValue } from "../utils/cm-util";
 
 export class UserController {
   private userRepository = AppDataSource.getMongoRepository(Users);
 
-  register(request: TypedBodyRequest<Users>, response, next) {
+  async register(req: TypedBodyRequest<Users>, response, next) {
     try {
       req.body.created = savedValue(req.body.created, new Date());
       req.body.level = savedValue(req.body.level, "normal");
