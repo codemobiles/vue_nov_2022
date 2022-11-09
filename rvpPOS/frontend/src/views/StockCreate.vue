@@ -43,8 +43,18 @@ export default {
       imageURL: null,
     });
 
-    function handleSubmit() {
-      alert(JSON.stringify(formState));
+    async function handleSubmit() {
+      // alert(JSON.stringify(formState));
+      let formData = new FormData();
+      const { name, price, stock } = formState;
+      formData.append("name", name);
+      formData.append("stock", stock.toString());
+      formData.append("price", price.toString());
+      if (formState.image) {
+        formData.append("image", formState.image!);
+      }
+      await api.addProduct(formData);
+      router.back();
     }
 
     const onFileSelected = (event: any) => {
