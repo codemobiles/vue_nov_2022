@@ -5,6 +5,14 @@ import { AppDataSource } from "./data-source";
 import { Routes } from "./routes";
 import * as cors from "cors";
 
+const verify1 = (req, res, next) => {
+  if (req.query.token1 == "leklek") {
+    next();
+  } else {
+    res.end("No token1");
+  }
+};
+
 AppDataSource.initialize()
   .then(async () => {
     // create express app
@@ -17,11 +25,12 @@ AppDataSource.initialize()
     Routes.forEach((route) => {
       (app as any)[route.method](
         "/api/v2" + route.route,
+        verify1,
         (req, res, next) => {
-          if (req.query.token == "leklek") {
+          if (req.query.token2 == "5555") {
             next();
           } else {
-            res.end("No token");
+            res.end("No token2");
           }
         },
         (req: Request, res: Response, next: Function) => {
