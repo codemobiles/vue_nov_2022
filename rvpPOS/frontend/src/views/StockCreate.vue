@@ -1,7 +1,7 @@
 <template>
   <div>
     <div>CodeMobiles</div>
-    <a-form>
+    <a-form @submit="handleSubmit()">
       <a-form-item label="Name">
         <a-input v-model:value="formState.name" />
       </a-form-item>
@@ -13,6 +13,8 @@
       <a-form-item label="Price">
         <a-input v-model:value="formState.price" />
       </a-form-item>
+
+      <a-button type="submit">Submit</a-button>
     </a-form>
   </div>
 </template>
