@@ -59,7 +59,7 @@ export default {
       formState.image = event.target.files[0];
     };
 
-    return { formState, handleSubmit };
+    return { formState, handleSubmit, onFileSelected };
   },
 };
 </script>
