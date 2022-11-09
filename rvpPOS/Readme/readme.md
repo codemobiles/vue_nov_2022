@@ -1,6 +1,6 @@
 # live share
 
-https://prod.liveshare.vsengsaas.visualstudio.com/join?7C3451D14BA9E05EEB8939BCB9578BA9227B
+https://prod.liveshare.vsengsaas.visualstudio.com/join?A7CB9AFE2C93CC11D4A91C48C53100D6B128
 
 # new project
 
