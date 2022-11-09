@@ -14,6 +14,14 @@
         <a-input v-model:value="formState.price" />
       </a-form-item>
 
+      <a-form-item :wrapper-col="{ span: 14, offset: 4 }">
+        <input type="file" @change="onFileSelected" />
+      </a-form-item>
+
+      <a-form-item :wrapper-col="{ span: 14, offset: 4 }">
+        <a-image :width="200" v-bind:src="formState.imageURL" />
+      </a-form-item>
+
       <a-button type="primary" @click="handleSubmit()">Submit</a-button>
     </a-form>
   </div>
