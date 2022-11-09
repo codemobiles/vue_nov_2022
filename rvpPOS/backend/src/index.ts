@@ -21,7 +21,7 @@ AppDataSource.initialize()
     Routes.forEach((route) => {
       (app as any)[route.method](
         "/api/v2" + route.route,
-        jwt.verify,
+        // jwt.verify,
         // verify1,
         // verify2,
         (req: Request, res: Response, next: Function) => {
