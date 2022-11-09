@@ -5,6 +5,7 @@ import { AppDataSource } from "./data-source";
 import { Routes } from "./routes";
 import * as cors from "cors";
 import verify from "./utils/verify.interceptor";
+import jwt from "./utils/jwt";
 
 const { verify1, verify2 } = verify;
 
@@ -20,8 +21,9 @@ AppDataSource.initialize()
     Routes.forEach((route) => {
       (app as any)[route.method](
         "/api/v2" + route.route,
-        verify1,
-        verify2,
+        jwt.verify,
+        // verify1,
+        // verify2,
         (req: Request, res: Response, next: Function) => {
           const result = new (route.controller as any)()[route.action](
             req,
