@@ -95,7 +95,7 @@ export default defineComponent({
         .then(async (res) => {
           let formData = new FormData();
           const { name, price, stock, image, product_id } = modelRef;
-          formData.append("product_id", product_id);
+          formData.append("id", product_id);
           formData.append("name", name);
           formData.append("stock", stock.toString());
           formData.append("price", price.toString());
