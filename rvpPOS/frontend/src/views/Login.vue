@@ -5,7 +5,7 @@
       style="
         box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 5px 0px;
         width: 300px;
-        height: 500px;
+        height: 550px;
       "
     >
       <template #cover>
@@ -52,6 +52,10 @@
             >
               Register
             </a-button>
+
+            <a-button block type="default" @click="$store.state.counter++"
+              >Add {{ $store.state.counter }}</a-button
+            >
           </a-space>
         </a-form-item>
       </a-form>
