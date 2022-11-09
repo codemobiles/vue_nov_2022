@@ -13,6 +13,14 @@ const verify1 = (req, res, next) => {
   }
 };
 
+const verify2 = (req, res, next) => {
+  if (req.query.token2 == "5555") {
+    next();
+  } else {
+    res.end("No token2");
+  }
+};
+
 AppDataSource.initialize()
   .then(async () => {
     // create express app
@@ -26,13 +34,7 @@ AppDataSource.initialize()
       (app as any)[route.method](
         "/api/v2" + route.route,
         verify1,
-        (req, res, next) => {
-          if (req.query.token2 == "5555") {
-            next();
-          } else {
-            res.end("No token2");
-          }
-        },
+        verify2,
         (req: Request, res: Response, next: Function) => {
           const result = new (route.controller as any)()[route.action](
             req,
