@@ -78,8 +78,8 @@ export default defineComponent({
     };
 
     let validateText = (rule: RuleObject, value: string) => {
-      if (formState.name === "") {
-        return Promise.reject("Please input the name");
+      if (formState.name === "" || formState.name.length < 5) {
+        return Promise.reject("ชื่อไม่ถูกต้อง");
       }
       return Promise.resolve();
     };
@@ -87,7 +87,7 @@ export default defineComponent({
     let validatePrice = (rule: RuleObject, value: string) => {
       console.log(value);
       if (formState.price < 10) {
-        return Promise.reject("price must be a least at 100");
+        return Promise.reject("price must be a least at 10");
       }
       return Promise.resolve();
     };
@@ -95,7 +95,7 @@ export default defineComponent({
     let validateStock = (rule: RuleObject, value: string) => {
       console.log(value);
       if (formState.stock < 10) {
-        return Promise.reject("stock must be a least at 100");
+        return Promise.reject("stock must be a least at 10");
       }
       return Promise.resolve();
     };
