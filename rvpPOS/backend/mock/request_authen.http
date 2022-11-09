@@ -1,5 +1,5 @@
 ### Login 
-POST http://localhost:8081/api/v2/login?token1=leklek&token2=5555 HTTP/1.1
+POST http://localhost:8081/api/v2/login HTTP/1.1
 Content-Type: application/json
 
 {

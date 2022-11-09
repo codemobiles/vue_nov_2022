@@ -48,3 +48,7 @@ node_args: "-r dotenv/config",
 # generate rsa key pair (jwt)
 
 - https://travistidwell.com/jsencrypt/demo/
+
+# set env variable
+
+- export ROOT_PATH=/Users/chaiyasittayabovorn/Desktop/vue_nov_2022/rvpPOS/backend
