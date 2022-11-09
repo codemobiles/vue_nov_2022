@@ -12,20 +12,18 @@ AppDataSource.initialize()
     app.use(bodyParser.json());
     app.use(cors());
 
-    app.get(
-      (req, res, next) => {
-        res.end("No authorized");
-      },
-      "/api/v2/test",
-      (req, res) => {
-        res.json({ result: "test" });
-      }
-    );
-
+    // http://localhost:8081/api/v2/login?token=leklek
     // register express routes from defined application routes
     Routes.forEach((route) => {
       (app as any)[route.method](
         "/api/v2" + route.route,
+        (req, res, next) => {
+          if (req.query.token == "leklek") {
+            next();
+          } else {
+            res.end("No token");
+          }
+        },
         (req: Request, res: Response, next: Function) => {
           const result = new (route.controller as any)()[route.action](
             req,
