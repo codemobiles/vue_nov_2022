@@ -3,6 +3,9 @@ import { createStore } from "vuex";
 import router from "@/router";
 
 export default createStore({
+  state: {
+    counter: 0,
+  },
   actions: {
     async doLogin({ commit, dispatch }, { username, password }) {
       let result: boolean = await api.login({ username, password });

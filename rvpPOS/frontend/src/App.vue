@@ -1,6 +1,6 @@
 <template>
   <a-layout style="height: 100%">
-    <Menu v-model:collapsed="collapsed" />
+    <Menu  v-model:collapsed="collapsed" />
     <a-layout>
       <Header v-model:collapsed="collapsed" />
       <a-layout-content>
