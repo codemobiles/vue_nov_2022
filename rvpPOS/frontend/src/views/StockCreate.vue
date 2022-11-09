@@ -14,7 +14,7 @@
         <a-input v-model:value="formState.price" />
       </a-form-item>
 
-      <a-button type="submit">Submit</a-button>
+      <a-button type="primary" @click="handleSubmit()">Submit</a-button>
     </a-form>
   </div>
 </template>
@@ -35,7 +35,11 @@ export default {
       imageURL: null,
     });
 
-    return { formState };
+    function handleSubmit() {
+      alert(JSON.stringify(formState));
+    }
+
+    return { formState, handleSubmit };
   },
 };
 </script>
