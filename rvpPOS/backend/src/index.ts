@@ -4,8 +4,9 @@ import { Request, Response } from "express";
 import { AppDataSource } from "./data-source";
 import { Routes } from "./routes";
 import * as cors from "cors";
+import verify from "./utils/verify.interceptor";
 
-
+const { verify1, verify2 } = verify;
 
 AppDataSource.initialize()
   .then(async () => {

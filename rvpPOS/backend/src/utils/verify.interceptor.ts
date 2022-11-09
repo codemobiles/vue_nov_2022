@@ -13,3 +13,5 @@ const verify2 = (req, res, next) => {
     res.end("No token2");
   }
 };
+
+export default { verify1, verify2 };
