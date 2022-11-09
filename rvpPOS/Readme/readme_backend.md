@@ -44,3 +44,7 @@ node_args: "-r dotenv/config",
 "build": "tsc && cp \*.key .env ecosystem.config.js ./build",
 }
 ```
+
+# generate rsa key pair (jwt)
+
+- https://travistidwell.com/jsencrypt/demo/
