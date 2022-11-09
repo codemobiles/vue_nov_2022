@@ -47,6 +47,18 @@ export default {
       alert(JSON.stringify(formState));
     }
 
+    const onFileSelected = (event: any) => {
+      // for preview
+      const reader = new FileReader();
+      reader.onload = (event: any) => {
+        formState.imageURL = event.target.result;
+      };
+
+      // for upload
+      reader.readAsDataURL(event.target.files[0]);
+      formState.image = event.target.files[0];
+    };
+
     return { formState, handleSubmit };
   },
 };
