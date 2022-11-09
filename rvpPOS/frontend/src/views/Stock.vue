@@ -16,7 +16,11 @@
         </template>
 
         <template v-if="column.key === 'image'">
-          <span>{{ record.image }}</span>
+          <img
+            :src="`http://localhost:8081/images/${record.image}`"
+            alt=""
+            style="height: 50px"
+          />
         </template>
       </template>
     </a-table>
