@@ -5,21 +5,7 @@ import { AppDataSource } from "./data-source";
 import { Routes } from "./routes";
 import * as cors from "cors";
 
-const verify1 = (req, res, next) => {
-  if (req.query.token1 == "leklek") {
-    next();
-  } else {
-    res.end("No token1");
-  }
-};
 
-const verify2 = (req, res, next) => {
-  if (req.query.token2 == "5555") {
-    next();
-  } else {
-    res.end("No token2");
-  }
-};
 
 AppDataSource.initialize()
   .then(async () => {
