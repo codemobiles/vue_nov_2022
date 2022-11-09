@@ -2,10 +2,15 @@
   <div>
     <div>CodeMobiles</div>
     <a-table
-      :columns="['product_id', 'name', 'stock', 'price']"
+      :columns="state.headers"
       :data-source="state.dataArray"
       :row-key="(record) => record.product_id"
     >
+      <template #bodyCell="{ column, record }">
+        <template v-if="column.key === 'product_id'">
+          <span>{{ record.product_id }}</span>
+        </template>
+      </template>
     </a-table>
   </div>
 </template>
@@ -17,6 +22,19 @@ import api from "@/services/api";
 export default {
   setup() {
     const state = reactive<any>({
+      headers: [
+        {
+          title: "Id",
+          align: "left",
+          sortable: false,
+          key: "product_id",
+        },
+        { title: "Image", key: "image" },
+        { title: "Name", key: "name" },
+        { title: "Price", key: "price" },
+        { title: "Stock", key: "stock" },
+        { title: "Action", key: "action" },
+      ],
       dataArray: [],
     });
 
