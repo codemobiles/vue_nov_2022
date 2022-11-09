@@ -20,3 +20,7 @@ https://www.mongodb.com/try/download/shell
 # mongorestore example
 
 - mongorestore -d demopos .../vue_nov_2022/rvpPOS/backend/dummy_db_cmpos
+
+# search with reg expression
+
+- db.products.find( { name: { $in: [ /^Node/i,] } })
