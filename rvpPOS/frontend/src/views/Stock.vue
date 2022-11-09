@@ -1,11 +1,12 @@
 <template>
   <div>
     <div>CodeMobiles</div>
-    <ul>
-      <li :key="index" v-for="(item, index) in state.dataArray">
-        {{ index }}. {{ item.name }}
-      </li>
-    </ul>
+    <a-table
+      :columns="['product_id', 'name', 'stock', 'price']"
+      :data-source="state.dataArray"
+      :row-key="(record) => record.product_id"
+    >
+    </a-table>
   </div>
 </template>
 
