@@ -12,9 +12,15 @@ AppDataSource.initialize()
     app.use(bodyParser.json());
     app.use(cors());
 
-    app.get("/api/v2/test", (req, res) => {
-      res.json({ result: "test" });
-    });
+    app.get(
+      (req, res, next) => {
+        res.end("No authorized");
+      },
+      "/api/v2/test",
+      (req, res) => {
+        res.json({ result: "test" });
+      }
+    );
 
     // register express routes from defined application routes
     Routes.forEach((route) => {
