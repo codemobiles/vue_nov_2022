@@ -3,7 +3,7 @@
     <div>CodeMobiles</div>
     <ul>
       <li :key="index" v-for="(item, index) in state.dataArray">
-        {{ index }}. {{ item }}
+        {{ index }}. {{ item.name }}
       </li>
     </ul>
   </div>
@@ -15,12 +15,17 @@ import api from "@/services/api";
 
 export default {
   setup() {
-    const state = reactive({
-      dataArray: ["angular", "vue", "react", "flutter"],
+    const state = reactive<any>({
+      dataArray: [],
     });
 
+    async function loadProduct() {
+      const result = await api.getProducts();
+      state.dataArray = result.data;
+    }
+
     onMounted(() => {
-      alert("1234");
+      loadProduct();
     });
 
     return { state };
