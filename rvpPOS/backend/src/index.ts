@@ -7,7 +7,7 @@ import * as cors from "cors";
 import verify from "./utils/verify.interceptor";
 import jwt from "./utils/jwt";
 
-const { verify1, verify2 } = verify;
+// const { verify1, verify2 } = verify;
 
 AppDataSource.initialize()
   .then(async () => {
