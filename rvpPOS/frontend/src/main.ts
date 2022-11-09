@@ -9,6 +9,7 @@ import "./assets/main.css";
 import store from "@/store";
 import filters from "@/services/filters";
 
+
 const app = createApp(App);
 app.config.globalProperties.$filters = filters;
 app.use(store);
