@@ -7,5 +7,9 @@ export default createStore({
       let result: boolean = await api.login({ username, password });
       alert(result ? "Login successfully" : "Login failed");
     },
+    async doRegister({ commit, dispatch }, { username, password }) {
+      let result: boolean = await api.register({ username, password });
+      alert(result ? "Register successfully" : "Register failed");
+    },
   },
 });

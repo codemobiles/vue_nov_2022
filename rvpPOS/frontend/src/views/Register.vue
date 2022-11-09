@@ -61,6 +61,7 @@ import { UserOutlined, LockOutlined } from "@ant-design/icons-vue";
 import { defineComponent, reactive } from "vue";
 import type { UnwrapRef } from "vue";
 import type { FormProps } from "ant-design-vue";
+import store from "@/store";
 
 interface FormState {
   username: string;
@@ -76,7 +77,9 @@ export default defineComponent({
       username: "",
       password: "",
     });
-    const handleFinish: FormProps["onFinish"] = async (values) => {};
+    const handleFinish: FormProps["onFinish"] = async (values) => {
+      store.dispatch({ type: "doRegister", ...formState });
+    };
     const handleFinishFailed: FormProps["onFinishFailed"] = (errors) => {
       alert(JSON.stringify(errors));
     };
