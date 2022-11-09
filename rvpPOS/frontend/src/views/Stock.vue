@@ -10,6 +10,14 @@
         <template v-if="column.key === 'product_id'">
           <span>{{ record.product_id }}</span>
         </template>
+
+        <template v-if="column.key === 'name'">
+          <span>{{ record.name }}</span>
+        </template>
+
+        <template v-if="column.key === 'image'">
+          <span>{{ record.image }}</span>
+        </template>
       </template>
     </a-table>
   </div>

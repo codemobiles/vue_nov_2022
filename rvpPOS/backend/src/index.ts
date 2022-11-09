@@ -15,6 +15,7 @@ AppDataSource.initialize()
     const app = express();
     app.use(bodyParser.json());
     app.use(cors());
+    app.use(express.static(process.env.ROOT_PATH + "/uploaded"));
 
     // http://localhost:8081/api/v2/login?token=leklek
     // register express routes from defined application routes
