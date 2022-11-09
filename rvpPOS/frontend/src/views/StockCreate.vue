@@ -1,19 +1,23 @@
 <template>
-  <div>
-    <div>CodeMobiles</div>
-    <a-form @submit="handleSubmit()">
-      <a-form-item label="Name">
+  <a-card
+    title="Create product"
+    class="ant-card-body"
+    style="box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 5px 0px; width: 700px"
+  >
+    <a-form :label-col="{ span: 4 }" :rules="rules">
+      <a-form-item label="Name" name="name" has-feedback>
         <a-input v-model:value="formState.name" />
       </a-form-item>
-
-      <a-form-item label="Stock">
-        <a-input v-model:value="formState.stock" />
+      <a-form-item label="Price" name="price" has-feedback>
+        <a-input-number style="width: 100%" v-model:value="formState.price" />
       </a-form-item>
-
-      <a-form-item label="Price">
-        <a-input v-model:value="formState.price" />
+      <a-form-item label="Stock" name="stock" has-feedback>
+        <a-input-number
+          style="width: 100%"
+          type="number"
+          v-model:value="formState.stock"
+        />
       </a-form-item>
-
       <a-form-item :wrapper-col="{ span: 14, offset: 4 }">
         <input type="file" @change="onFileSelected" />
       </a-form-item>
@@ -22,18 +26,23 @@
         <a-image :width="200" v-bind:src="formState.imageURL" />
       </a-form-item>
 
-      <a-button type="primary" @click="handleSubmit()">Submit</a-button>
+      <a-form-item :wrapper-col="{ span: 14, offset: 4 }">
+        <a-button type="primary" @click.prevent="onSubmit">Create</a-button>
+        <a-button style="margin-left: 10px" @click="$router.push('/stock')"
+          >Cancel</a-button
+        >
+      </a-form-item>
     </a-form>
-  </div>
+  </a-card>
 </template>
-
 <script lang="ts">
 import { defineComponent, reactive, toRaw } from "vue";
 import { Form } from "ant-design-vue";
 import api from "@/services/api";
 import router from "@/router";
-
-export default {
+import type { RuleObject } from "ant-design-vue/lib/form";
+const useForm = Form.useForm;
+export default defineComponent({
   setup() {
     const formState = reactive({
       name: "product",
@@ -43,8 +52,7 @@ export default {
       imageURL: null,
     });
 
-    async function handleSubmit() {
-      // alert(JSON.stringify(formState));
+    const onSubmit = async () => {
       let formData = new FormData();
       const { name, price, stock } = formState;
       formData.append("name", name);
@@ -55,7 +63,7 @@ export default {
       }
       await api.addProduct(formData);
       router.back();
-    }
+    };
 
     const onFileSelected = (event: any) => {
       // for preview
@@ -69,9 +77,41 @@ export default {
       formState.image = event.target.files[0];
     };
 
-    return { formState, handleSubmit, onFileSelected };
-  },
-};
-</script>
+    let validateText = (rule: RuleObject, value: string) => {
+      if (formState.name === "") {
+        return Promise.reject("Please input the name");
+      }
+      return Promise.resolve();
+    };
 
-<style></style>
+    let validatePrice = (rule: RuleObject, value: string) => {
+      console.log(value);
+      if (formState.price < 10) {
+        return Promise.reject("price must be a least at 100");
+      }
+      return Promise.resolve();
+    };
+
+    let validateStock = (rule: RuleObject, value: string) => {
+      console.log(value);
+      if (formState.stock < 10) {
+        return Promise.reject("stock must be a least at 100");
+      }
+      return Promise.resolve();
+    };
+
+    const rules = {
+      name: [{ required: true, validator: validateText, trigger: "change" }],
+      price: [{ validator: validatePrice, trigger: "change" }],
+      stock: [{ validator: validateStock, trigger: "change" }],
+    };
+
+    return {
+      rules,
+      formState,
+      onSubmit,
+      onFileSelected,
+    };
+  },
+});
+</script>
