@@ -1,8 +1,8 @@
 <template>
   <a-layout style="height: 100%">
-    <Menu  v-model:collapsed="collapsed" />
+    <Menu v-if="$store.getters['isLogin']" v-model:collapsed="collapsed" />
     <a-layout>
-      <Header v-model:collapsed="collapsed" />
+      <Header v-if="$store.getters['isLogin']" v-model:collapsed="collapsed" />
       <a-layout-content>
         <Content />
       </a-layout-content>
