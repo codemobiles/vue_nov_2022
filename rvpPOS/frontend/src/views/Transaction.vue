@@ -17,7 +17,7 @@
               <span
                 :class="
                   record.transaction_id == state.selectedTransactionId
-                    ? 'bg-blue-600 text-white'
+                    ? 'bg-green-600 text-white p-1 rounded-md'
                     : null
                 "
                 >{{ record.transaction_id }}</span
