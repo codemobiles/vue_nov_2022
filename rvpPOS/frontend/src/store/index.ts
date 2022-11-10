@@ -20,7 +20,10 @@ export default createStore({
       router.push("/login");
     },
     doAddCounter() {
-      this.state.counter++;
+      // do something
+      setTimeout(() => {
+        this.state.counter++;
+      }, 1000);
     },
   },
 });
