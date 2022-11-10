@@ -1,28 +1,217 @@
 <template>
-  <div class="flex flex-col pl-7">
-    <h1>Payment</h1>
-    <span
-      >Total: {{ totalNumber }} / Qty: {{ JSON.parse(order_list).length }}</span
-    >
+  <a-card style="width: 100%">
+    <a-row style="width: 100%">
+      <a-col :span="24">
+        <a-form v-if="paidNumber > 0">
+          <!-- Change section -->
+          <a-form-item v-if="changeMoney > 0">
+            <a-input
+              prefix="Change:"
+              :value="$filters.currency(changeMoney)"
+              label="Change"
+              disabled
+            />
+          </a-form-item>
 
-    <a-button class="my-5" type="primary" block @click="handlePayment()"
-      >Payment</a-button
-    >
-  </div>
+          <!-- Given section -->
+          <a-form-item>
+            <a-input
+              prefix="Paid:"
+              type="text"
+              label="Paid"
+              :value="$filters.currency(paidNumber)"
+            >
+              <template #suffix v-if="paidFloat > 0.0">
+                <a-tooltip title="Clear">
+                  <CloseCircleOutlined
+                    style="color: rgba(0, 0, 0, 0.45)"
+                    @click="onClear"
+                  />
+                </a-tooltip>
+              </template>
+            </a-input>
+          </a-form-item>
+        </a-form>
+
+        <!-- a-buttons section -->
+        <a-row>
+          <a-col :span="8"
+            ><a-button
+              style="height: 50px"
+              type="dashed"
+              block
+              @click="onPaidChange(1000)"
+              >฿1,000</a-button
+            ></a-col
+          >
+          <a-col :span="8"
+            ><a-button
+              type="dashed"
+              style="height: 50px"
+              block
+              @click="onPaidChange(500)"
+              >฿500</a-button
+            ></a-col
+          >
+          <a-col :span="8"
+            ><a-button
+              type="dashed"
+              style="height: 50px"
+              block
+              @click="onPaidChange(100)"
+              >฿100</a-button
+            ></a-col
+          >
+        </a-row>
+
+        <!-- a-buttons section -->
+        <a-row>
+          <a-col :span="8"
+            ><a-button
+              type="dashed"
+              style="height: 50px"
+              block
+              @click="onPaidChange(50)"
+              >฿50</a-button
+            ></a-col
+          >
+          <a-col :span="8"
+            ><a-button
+              type="dashed"
+              style="height: 50px"
+              block
+              @click="onPaidChange(20)"
+              >฿20</a-button
+            ></a-col
+          >
+
+          <a-col :span="8"
+            ><a-button
+              type="dashed"
+              block
+              style="height: 50px"
+              @click="onPaidChange(10)"
+              >฿10</a-button
+            ></a-col
+          >
+        </a-row>
+
+        <!-- a-buttons section -->
+        <a-row>
+          <a-col :span="8">
+            <a-button style="height: 50px" type="dashed" block @click="onCancel"
+              >CANCEL</a-button
+            >
+          </a-col>
+
+          <a-col :span="8"
+            ><a-button
+              style="height: 50px"
+              danger
+              class="default"
+              block
+              @click="onPaidExact"
+              >EXACT</a-button
+            ></a-col
+          >
+
+          <a-col :span="8"
+            ><a-button
+              type="primary"
+              block
+              style="height: 50px"
+              @click="onSubmit"
+              :disabled="!isPaidEnough"
+              >PAYMENT</a-button
+            >
+          </a-col>
+        </a-row>
+      </a-col>
+    </a-row>
+  </a-card>
 </template>
 
-<script lang="ts">
-export default {
-  props: ["totalNumber", "order_list"],
-  emits: ["onChange", "onCancel"],
+<script>
+import api from "@/services/api";
+import { defineComponent, ref, computed } from "vue";
+import { CloseCircleOutlined } from "@ant-design/icons-vue";
+
+export default defineComponent({
+  components: { CloseCircleOutlined },
+  emits: ["onChange"],
+  props: {
+    totalNumber: Number,
+    order_list: String,
+  },
   setup(props, { emit }) {
-    function handlePayment() {
-      emit("onCancel", { message: "Order was cancelled" });
+    const paidNumber = ref(0);
+
+    const paidFloat = computed(() => {
+      return parseFloat(paidNumber.value.toString().replace(/,/g, ""));
+    });
+
+    const changeMoney = computed(() => {
+      let change = paidFloat.value - props.totalNumber;
+      if (change > 0) {
+        return change;
+      }
+      return "";
+    });
+
+    const isPaidEnough = computed(() => {
+      return paidFloat.value >= props.totalNumber;
+    });
+
+    const onCancel = () => {
+      emit("onChange", {
+        status: "ok",
+        change: 0,
+      });
+    };
+
+    function onClear() {
+      paidNumber.value = 0;
     }
 
-    return { handlePayment };
+    function onPaidChange(paid) {
+      paidNumber.value = paidFloat.value + paid;
+    }
+
+    function onPaidExact() {
+      paidNumber.value = props.totalNumber;
+    }
+
+    async function onSubmit() {
+      let trans = {
+        total: props.totalNumber,
+        paid: paidFloat.value,
+        change: changeMoney.value,
+        payment_type: "cash",
+        payment_detail: "full",
+        seller_id: "sr0001",
+        buyer_id: "by0000",
+        order_list: props.order_list,
+      };
+
+      await api.sendTransaction(trans);
+      emit("onChange", {
+        status: "ok",
+        change: changeMoney,
+      });
+    }
+
+    return {
+      paidNumber,
+      changeMoney,
+      isPaidEnough,
+      onCancel,
+      onClear,
+      onPaidChange,
+      onPaidExact,
+      onSubmit,
+    };
   },
-};
+});
 </script>
 
 <style></style>
