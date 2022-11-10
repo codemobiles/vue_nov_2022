@@ -2,6 +2,9 @@
   <a-card style="width: 100%">
     <a-row style="width: 100%">
       <a-col :span="24">
+        <div>Random: {{ getRandom() }}</div>
+        <div>Random: {{ getRandom() }}</div>
+
         <a-form v-if="paidNumber > 0">
           <!-- Change section -->
           <a-form-item v-if="changeMoney > 0">
@@ -146,9 +149,9 @@ export default defineComponent({
   setup(props, { emit }) {
     const paidNumber = ref(0);
 
-    const paidFloat = computed(() => {
-      return parseFloat(paidNumber.value.toString().replace(/,/g, ""));
-    });
+    function getRandom() {
+      return Math.random();
+    }
 
     const changeMoney = computed(() => {
       let change = paidFloat.value - props.totalNumber;
@@ -158,14 +161,17 @@ export default defineComponent({
       return "";
     });
 
+    const paidFloat = computed(() => {
+      return parseFloat(paidNumber.value.toString().replace(/,/g, ""));
+    });
+
     const isPaidEnough = computed(() => {
       return paidFloat.value >= props.totalNumber;
     });
 
     const onCancel = () => {
-      emit("onChange", {
-        status: "ok",
-        change: 0,
+      emit("onCancel", {
+        message: "Order was cancelled",
       });
     };
 
@@ -209,6 +215,7 @@ export default defineComponent({
       onPaidChange,
       onPaidExact,
       onSubmit,
+      getRandom,
     };
   },
 });
