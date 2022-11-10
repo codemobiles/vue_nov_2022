@@ -19,5 +19,8 @@ export default createStore({
       localStorage.clear();
       router.push("/login");
     },
+    doAddCounter() {
+      this.state.counter++;
+    },
   },
 });

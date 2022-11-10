@@ -53,7 +53,7 @@
               Register
             </a-button>
 
-            <a-button block type="default" @click="$store.state.counter++"
+            <a-button block type="default" @click="handleAddCounter()"
               >Add {{ $store.state.counter }}</a-button
             >
           </a-space>
@@ -90,7 +90,11 @@ export default {
       formState.password = "";
     }
 
-    return { formState, handleFinish, handleFinishFailed };
+    function handleAddCounter() {
+      store.dispatch("doAddCounter");
+    }
+
+    return { formState, handleFinish, handleFinishFailed, handleAddCounter };
   },
 };
 </script>
