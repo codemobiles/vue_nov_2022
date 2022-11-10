@@ -6,6 +6,11 @@ export default createStore({
   state: {
     counter: 0,
   },
+  mutations: {
+    ADD_COUNTER(state) {
+      state.counter++;
+    },
+  },
   actions: {
     async doLogin({ commit, dispatch }, { username, password }) {
       let result: boolean = await api.login({ username, password });
@@ -19,10 +24,11 @@ export default createStore({
       localStorage.clear();
       router.push("/login");
     },
-    doAddCounter() {
+    doAddCounter({ commit }) {
       // do something
       setTimeout(() => {
-        this.state.counter++;
+        // this.state.counter++;
+        commit("ADD_COUNTER");
       }, 1000);
     },
   },
