@@ -17,7 +17,7 @@ export default {
   emits: ["onChange", "onCancel"],
   setup(props, { emit }) {
     function handlePayment() {
-      emit("onCancel");
+      emit("onCancel", { message: "Order was cancelled" });
     }
 
     return { handlePayment };

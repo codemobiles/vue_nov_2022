@@ -96,7 +96,7 @@
       </div>
 
       <Payment
-        @onCancel="onPaymentResult"
+        @onCancel="onClear"
         @onChange="onPaymentResult"
         v-if="mOrderArray.length > 0"
         :totalNumber="mTotalPrice"
