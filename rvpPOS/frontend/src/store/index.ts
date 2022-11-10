@@ -1,8 +1,9 @@
 import api from "@/services/api";
-import { createStore } from "vuex";
+import { createStore, createLogger } from "vuex";
 import router from "@/router";
 
 export default createStore({
+  plugins: [createLogger()],
   state: {
     counter: 0,
   },
