@@ -29,6 +29,6 @@
    "scripts": {
       "start": "ts-node-dev src/index.ts",
       "typeorm": "typeorm-ts-node-commonjs",
-      "build": "tsc"
+      "build": "tsc && cp *.key .env ecosystem.config.js ./build"
    }
 }
