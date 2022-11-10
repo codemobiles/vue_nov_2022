@@ -4,6 +4,8 @@
     <span
       >Total: {{ totalNumber }} / Qty: {{ JSON.parse(order_list).length }}</span
     >
+
+    <a-button class="my-5" type="primary" block>Payment</a-button>
   </div>
 </template>
 
