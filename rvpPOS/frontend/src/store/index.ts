@@ -4,12 +4,19 @@ import router from "@/router";
 
 export default createStore({
   plugins: [createLogger()],
+  getters: {
+    getCounter(state) {
+      return "Counter: " + state.counter;
+    },
+  },
   state: {
     counter: 0,
   },
   mutations: {
     ADD_COUNTER(state) {
-      state.counter++;
+      if (state.counter < 10) {
+        state.counter++;
+      }
     },
   },
   actions: {

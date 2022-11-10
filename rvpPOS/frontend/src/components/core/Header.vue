@@ -17,7 +17,8 @@
       />
       <span
         style="font-size: 25px; color: white; flex-grow: 1; margin-left: 16px"
-        >Vue3 / NodeJS / Express / Mongo {{ $store.state.counter }}</span
+        >Vue3 / NodeJS / Express / Mongo
+        {{ $store.getters["getCounter"] }}</span
       >
 
       <a-space @click.prevent="onClickLogOff()">
