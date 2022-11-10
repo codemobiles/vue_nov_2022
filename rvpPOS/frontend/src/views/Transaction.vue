@@ -14,9 +14,14 @@
         >
           <template #bodyCell="{ column, record }">
             <template v-if="column.key === 'transaction_id'">
-              <span :class="true ? null : 'bg-blue-600 text-white'">{{
-                record.transaction_id
-              }}</span>
+              <span
+                :class="
+                  record.transaction_id == state.selectedTransactionId
+                    ? 'bg-blue-600 text-white'
+                    : null
+                "
+                >{{ record.transaction_id }}</span
+              >
             </template>
 
             <template v-if="column.key === 'timestamp'">
@@ -88,6 +93,7 @@ export default defineComponent({
         { title: "Type", key: "payment_type" },
       ],
       selectedOrder: null,
+      selectedTransactionId: "",
       pagination: {
         total: 0,
         pageSize: 10, // Display 10 data per page
@@ -116,6 +122,7 @@ export default defineComponent({
     const customRow = (record: any) => {
       return {
         onClick: (event: any) => {
+          state.selectedTransactionId = record.transaction_id;
           state.selectedOrder = JSON.parse(record.order_list);
         },
       };
