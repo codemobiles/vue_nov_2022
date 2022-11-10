@@ -2,8 +2,11 @@
   <a-card style="width: 100%">
     <a-row style="width: 100%">
       <a-col :span="24">
-        <div>Random: {{ getRandom() }}</div>
-        <div>Random: {{ getRandom() }}</div>
+        <!-- <div>GetRandom: {{ getRandom() }}</div>
+        <div>GetRandom: {{ getRandom() }}</div>
+
+        <div>Random: {{ random }}</div>
+        <div>Random: {{ random }}</div> -->
 
         <a-form v-if="paidNumber > 0">
           <!-- Change section -->
@@ -153,6 +156,10 @@ export default defineComponent({
       return Math.random();
     }
 
+    const random = computed(() => {
+      return Math.random();
+    });
+
     const changeMoney = computed(() => {
       let change = paidFloat.value - props.totalNumber;
       if (change > 0) {
@@ -216,6 +223,7 @@ export default defineComponent({
       onPaidExact,
       onSubmit,
       getRandom,
+      random,
     };
   },
 });

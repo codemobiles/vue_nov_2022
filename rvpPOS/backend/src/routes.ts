@@ -95,4 +95,4 @@ const transactionRoutes = [
   },
 ];
 
-export const Routes = [...authRoutes, ...productRoutes];
+export const Routes = [...authRoutes, ...productRoutes, ...transactionRoutes];
