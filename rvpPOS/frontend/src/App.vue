@@ -11,14 +11,19 @@
 </template>
 
 <script lang="ts">
-import { ref } from "vue";
+import { ref, onMounted } from "vue";
 import Menu from "@/components/core/Menu.vue";
 import Header from "@/components/core/Header.vue";
 import Content from "@/components/core/Content.vue";
+import store from "@/store";
 export default {
   components: { Menu, Header, Content },
   setup() {
     const collapsed = ref<boolean>(false);
+
+    onMounted(() => {
+      store.dispatch("restoreLogin");
+    });
 
     return { collapsed };
   },
