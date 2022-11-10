@@ -77,16 +77,16 @@ export default {
           {
             label: "2020",
             data: chartData.data,
-            fill: false,
+            fill: true,
             borderColor: "#41B883",
-            backgroundColor: "black",
+            backgroundColor: "#41B88333",
           },
           {
             label: "2021",
             data: chartData.data,
             fill: false,
             borderColor: "#00D8FF",
-            tension: 0.5,
+            tension: 0.3,
             backgroundColor: "blue",
           },
         ],
@@ -108,7 +108,7 @@ export default {
           },
           datalabels: {
             backgroundColor: function (context) {
-              return context.dataset.backgroundColor;
+              return;
             },
             borderRadius: 4,
             color: "white",
