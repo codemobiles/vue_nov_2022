@@ -5,13 +5,23 @@
       >Total: {{ totalNumber }} / Qty: {{ JSON.parse(order_list).length }}</span
     >
 
-    <a-button class="my-5" type="primary" block>Payment</a-button>
+    <a-button class="my-5" type="primary" block @click="handlePayment()"
+      >Payment</a-button
+    >
   </div>
 </template>
 
 <script lang="ts">
 export default {
   props: ["totalNumber", "order_list"],
+  emits: ["onChange", "onCancel"],
+  setup(props, { emit }) {
+    function handlePayment() {
+      emit("onCancel");
+    }
+
+    return { handlePayment };
+  },
 };
 </script>
 
