@@ -29,7 +29,7 @@ export default createStore({
       setTimeout(() => {
         // this.state.counter++;
         commit("ADD_COUNTER");
-      }, 1000);
+      }, 200);
     },
   },
 });
