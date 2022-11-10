@@ -1,43 +1,56 @@
-import api from "@/services/api";
+/* eslint-disable */
+
 import { createStore, createLogger } from "vuex";
-import router from "@/router";
+import api from "@/services/api";
+import { server } from "@/services/constants";
 
 export default createStore({
   plugins: [createLogger()],
+  state: {
+    username: "",
+    isLogged: false,
+  },
   getters: {
-    getCounter(state) {
-      return "Counter: " + state.counter;
+    isLogin(state) {
+      return state.isLogged;
+    },
+    username(state) {
+      return state.username;
     },
   },
-  state: {
-    counter: 0,
-  },
   mutations: {
-    ADD_COUNTER(state) {
-      if (state.counter < 10) {
-        state.counter++;
-      }
+    SET_LOGGED_IN(state) {
+      state.isLogged = true;
+    },
+    SET_LOGGED_OUT(state) {
+      state.isLogged = false;
+    },
+    SET_USERNAME(state, username) {
+      state.username = username;
     },
   },
   actions: {
+    restoreLogin({ commit }) {
+      if (api.isLoggedIn() == true) {
+        let username = localStorage.getItem(server.USERNAME);
+        commit("SET_LOGGED_IN");
+        commit("SET_USERNAME", username);
+      }
+    },
     async doLogin({ commit, dispatch }, { username, password }) {
-      let result: boolean = await api.login({ username, password });
-      alert(result ? "Login successfully" : "Login failed");
+      let result = await api.login({ username, password });
+      if (result == true) {
+        commit("SET_LOGGED_IN");
+        commit("SET_USERNAME", username);
+      } else {
+        dispatch("doLogout", {});
+      }
     },
-    async doRegister({ commit, dispatch }, { username, password }) {
-      let result: boolean = await api.register({ username, password });
-      alert(result ? "Register successfully" : "Register failed");
-    },
-    doLogout() {
-      localStorage.clear();
-      router.push("/login");
-    },
-    doAddCounter({ commit }) {
-      // do something
-      setTimeout(() => {
-        // this.state.counter++;
-        commit("ADD_COUNTER");
-      }, 200);
+    doLogout({ commit, state, dispatch }) {
+      api.logoff();
+      commit("SET_LOGGED_OUT");
+      commit("SET_USERNAME", "");
     },
   },
+  modules: {},
 });

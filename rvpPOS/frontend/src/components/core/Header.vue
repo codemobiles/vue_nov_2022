@@ -18,8 +18,7 @@
       <span
         style="font-size: 25px; color: white; flex-grow: 1; margin-left: 16px"
         >Vue3 / NodeJS / Express / Mongo
-        {{ $store.getters["getCounter"] }}</span
-      >
+      </span>
 
       <a-space @click.prevent="onClickLogOff()">
         <LogoutOutlined style="color: white; font-size: 20px" />

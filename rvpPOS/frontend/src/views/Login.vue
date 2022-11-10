@@ -5,7 +5,7 @@
       style="
         box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 5px 0px;
         width: 300px;
-        height: 550px;
+        height: 500px;
       "
     >
       <template #cover>
@@ -52,51 +52,58 @@
             >
               Register
             </a-button>
-
-            <a-button block type="default" @click="handleAddCounter()"
-              >Add {{ $store.state.counter }}</a-button
-            >
           </a-space>
         </a-form-item>
       </a-form>
     </a-card>
   </div>
 </template>
-
 <script lang="ts">
-import { reactive } from "vue";
-import {
-  UserOutlined,
-  LockOutlined,
-  LogoutOutlined,
-} from "@ant-design/icons-vue";
-import httpClient from "@/services/httpClient";
-import store from "@/store";
-
-export default {
-  components: { UserOutlined, LockOutlined, LogoutOutlined },
-  setup() {
-    const formState = reactive({ username: "admin", password: "1234" });
-
-    async function handleFinish() {
-      store.dispatch({ type: "doLogin", ...formState });
-
-      // const result = await httpClient.post("/login", formState);
-      // alert(JSON.stringify(result));
-    }
-
-    function handleFinishFailed() {
-      formState.username = "";
-      formState.password = "";
-    }
-
-    function handleAddCounter() {
-      store.dispatch("doAddCounter");
-    }
-
-    return { formState, handleFinish, handleFinishFailed, handleAddCounter };
+import { UserOutlined, LockOutlined } from "@ant-design/icons-vue";
+import { defineComponent, reactive, computed } from "vue";
+import type { UnwrapRef } from "vue";
+import type { FormProps } from "ant-design-vue";
+// import Tmp from "./Tmp.vue";
+import store from "./../store";
+import type { User } from "@/models/user.model";
+interface FormState {
+  username: string;
+  password: string;
+}
+export default defineComponent({
+  components: {
+    UserOutlined,
+    LockOutlined,
   },
-};
-</script>
+  setup() {
+    const formState: UnwrapRef<FormState> = reactive<User>({
+      username: "admin",
+      password: "1234",
+    });
+    const handleFinish: FormProps["onFinish"] = (values) => {
+      store.dispatch({ type: "doLogin", ...formState });
+    };
+    const handleFinishFailed: FormProps["onFinishFailed"] = (errors) => {
+      alert(JSON.stringify(errors));
+    };
 
-<style></style>
+    const gentleName = computed(() => "Mr. " + formState.username, {
+      onTrack(e) {
+        // triggered when count.value is tracked as a dependency
+        debugger;
+      },
+      onTrigger(e) {
+        // triggered when count.value is mutated
+        debugger;
+      },
+    });
+
+    return {
+      gentleName,
+      formState,
+      handleFinish,
+      handleFinishFailed,
+    };
+  },
+});
+</script>

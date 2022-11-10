@@ -33,7 +33,7 @@
           style="width: 100%"
         >
           <CodepenOutlined style="color: white; font-size: 30px" class="pt-2" />
-          <span style="font-size: 18px">Stock {{ $store.state.counter }}</span>
+          <span style="font-size: 18px">Stock</span>
         </a-space>
       </a-menu-item>
       <a-menu-item key="2">
