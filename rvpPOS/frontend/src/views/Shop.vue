@@ -107,6 +107,10 @@
             ยอดชำระ
           </h1>
         </template>
+
+        <template #payment_btn>
+          <ShoppingCartOutlined class="text-lg" />
+        </template>
       </Payment>
 
       <!-- Waiting order image-->
