@@ -130,8 +130,9 @@
               style="height: 50px"
               @click="onSubmit"
               :disabled="!isPaidEnough"
-              >PAYMENT</a-button
             >
+              <slot name="payment_btn"> <span>PAYMENT</span> </slot>
+            </a-button>
           </a-col>
         </a-row>
       </a-col>
