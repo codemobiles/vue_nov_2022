@@ -101,7 +101,13 @@
         v-if="mOrderArray.length > 0"
         :totalNumber="mTotalPrice"
         :order_list="JSON.stringify(mOrderArray)"
-      />
+      >
+        <template v-slot:title>
+          <h1 class="bg-orange-500 text-center text-white rounded-md">
+            ยอดชำระ
+          </h1>
+        </template>
+      </Payment>
 
       <!-- Waiting order image-->
       <div

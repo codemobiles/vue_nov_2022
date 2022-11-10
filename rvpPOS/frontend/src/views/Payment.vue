@@ -8,6 +8,8 @@
         <div>Random: {{ random }}</div>
         <div>Random: {{ random }}</div> -->
 
+        <slot name="title"><h1>Payment</h1></slot>
+
         <a-form v-if="paidNumber > 0">
           <!-- Change section -->
           <a-form-item v-if="changeMoney > 0">
