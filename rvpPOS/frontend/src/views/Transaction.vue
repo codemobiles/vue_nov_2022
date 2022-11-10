@@ -14,7 +14,9 @@
         >
           <template #bodyCell="{ column, record }">
             <template v-if="column.key === 'transaction_id'">
-              <span>{{ record.transaction_id }}</span>
+              <span :class="true ? null : 'bg-blue-600 text-white'">{{
+                record.transaction_id
+              }}</span>
             </template>
 
             <template v-if="column.key === 'timestamp'">
