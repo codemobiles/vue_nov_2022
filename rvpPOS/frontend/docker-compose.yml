@@ -3,7 +3,7 @@ version: "3.5"
 services:
   app:
     build: '.'
-    image: 'cm_vuejs'
-    container_name: cm_vuejs
+    image: 'frontend_rvp'
+    container_name: frontend_rvp
     ports:
       - 1152:80

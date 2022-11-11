@@ -1,0 +1,47 @@
+version: '3.5'
+
+services:
+  database:        
+    image: mongo:latest
+    container_name: vue_database                
+    volumes:
+      - cmmongo-volume:/data      
+    ports:
+      - 27018:27017
+    networks:
+      - vuenetwork
+  backend:
+    build: backend-ts/
+    image: backend-vue:1.0
+    container_name: backend-vue
+    volumes:
+        - cmvue-volume:/build/uploaded
+    ports:
+      - 8081:8081
+    depends_on:
+      - database
+    networks:
+      - vuenetwork
+  frontend:
+    build: frontend/
+    image: frontend-vue:1.0
+    container_name: frontend-vue
+    ports:
+      - 80:80
+    depends_on:
+      - backend
+    networks:
+      - vuenetwork
+
+networks:
+  vuenetwork:
+    name: vue_workshop
+    driver: bridge
+
+volumes:
+    cmvue-volume:
+        external: false
+    cmmongo-volume:
+        external: false    
+
+
