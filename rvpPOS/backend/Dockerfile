@@ -20,7 +20,7 @@ RUN npm run build-docker
 COPY uploaded ./build/uploaded
 
 ENV ROOT_PATH=./build
-ENV MONGO_HOST=localhost
+ENV MONGO_HOST=172.17.0.2
 ENV MONGO_PORT=27017
 
 
