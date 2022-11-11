@@ -12,6 +12,7 @@
 
 - npm i -g typescript dotenv ts-node ts-node-dev
 - yarn build
+- npx serve -s -p 80 ./dist
 - update mongo url (data-source.ts)
 - dotenv_config_path=/custom/path/to/.env
 
