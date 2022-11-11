@@ -5,7 +5,7 @@ services:
     image: mongo:latest
     container_name: rvp_database                
     volumes:
-      - cmmongo-volume:/data      
+      - rvp_mongo-volume:/data      
     ports:
       - 27018:27017
     networks:
