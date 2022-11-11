@@ -62,7 +62,7 @@
         <div>
           <span>
             <b style="font-size: 18px; font-weight: 100"
-              >{{ $filters.currency(mTaxAmt) }}
+              >{{ filters.currency(mTaxAmt) }}
             </b>
           </span>
         </div>
@@ -89,7 +89,7 @@
         <div>
           <span>
             <b style="font-size: 27px; color: red"
-              >{{ $filters.currency(mTotalPrice) }}
+              >{{ filters.currency(mTotalPrice) }}
             </b>
           </span>
         </div>
@@ -138,15 +138,12 @@
           bodyStyle="padding-top:8px; padding-bottom:8px;"
         >
           <div class="flex flex-row flex-unwrap align-middle">
-            <img
-              :src="$filters.fullImageUrl(item.image)"
-              style="width: 100px"
-            />
+            <img :src="filters.fullImageUrl(item.image)" style="width: 100px" />
 
             <div style="flex-grow: 1">
               <div>{{ item.name }}</div>
               <div>
-                {{ $filters.currency(item.price) }} x {{ item.qty }} pcs.
+                {{ filters.currency(item.price) }} x {{ item.qty }} pcs.
               </div>
             </div>
             <DeleteOutlined
