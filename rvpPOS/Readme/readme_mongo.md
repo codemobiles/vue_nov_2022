@@ -24,3 +24,9 @@ https://www.mongodb.com/try/download/shell
 # search with reg expression
 
 - db.products.find( { name: { $in: [ /^Node/i,] } })
+
+# mongo url connection
+
+```
+mongodb://localhost:27017
+```

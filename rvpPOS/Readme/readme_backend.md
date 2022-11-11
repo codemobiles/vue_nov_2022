@@ -31,12 +31,12 @@ yarn start
 
 ```
 module.exports = {
-apps: [
-{
-name: "app1",
-script: "./index.js",
-node_args: "-r dotenv/config",
-},
+    apps: [
+    {
+        name: "app1",
+        script: "./index.js",
+        node_args: "-r dotenv/config",
+    },
 ],
 };
 
@@ -52,9 +52,9 @@ node_args: "-r dotenv/config",
 # set env variable
 
 ### mac
+
 - export ROOT_PATH=/Users/chaiyasittayabovorn/Desktop/vue_nov_2022/rvpPOS/backend
 
 ### window
+
 - set ROOT_PATH=/Users/chaiyasittayabovorn/Desktop/vue_nov_2022/rvpPOS/backend
-
-
