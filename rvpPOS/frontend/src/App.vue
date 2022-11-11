@@ -1,8 +1,8 @@
 <template>
   <a-layout style="height: 100%">
-    <Menu v-if="$store.getters['isLogin']" v-model:collapsed="collapsed" />
+    <Menu v-if="store.getters['isLogin']" v-model:collapsed="collapsed" />
     <a-layout>
-      <Header v-if="$store.getters['isLogin']" v-model:collapsed="collapsed" />
+      <Header v-if="store.getters['isLogin']" v-model:collapsed="collapsed" />
       <a-layout-content>
         <Content />
       </a-layout-content>
@@ -25,7 +25,7 @@ export default {
       store.dispatch("restoreLogin");
     });
 
-    return { collapsed };
+    return { collapsed, store };
   },
 };
 </script>

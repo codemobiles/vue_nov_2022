@@ -15,7 +15,7 @@
           <a-form-item v-if="changeMoney > 0">
             <a-input
               prefix="Change:"
-              :value="$filters.currency(changeMoney)"
+              :value="filters.currency(changeMoney)"
               label="Change"
               disabled
             />
@@ -27,7 +27,7 @@
               prefix="Paid:"
               type="text"
               label="Paid"
-              :value="$filters.currency(paidNumber)"
+              :value="filters.currency(paidNumber)"
             >
               <template #suffix v-if="paidFloat > 0.0">
                 <a-tooltip title="Clear">
@@ -144,6 +144,7 @@
 import api from "@/services/api";
 import { defineComponent, ref, computed } from "vue";
 import { CloseCircleOutlined } from "@ant-design/icons-vue";
+import filters from "@/services/filters";
 
 export default defineComponent({
   components: { CloseCircleOutlined },
@@ -227,6 +228,7 @@ export default defineComponent({
       onSubmit,
       getRandom,
       random,
+      filters,
     };
   },
 });
