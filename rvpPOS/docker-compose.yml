@@ -3,45 +3,45 @@ version: '3.5'
 services:
   database:        
     image: mongo:latest
-    container_name: vue_database                
+    container_name: rvp_database                
     volumes:
       - cmmongo-volume:/data      
     ports:
       - 27018:27017
     networks:
-      - vuenetwork
+      - rvpnetwork
   backend:
-    build: backend-ts/
-    image: backend-vue:1.0
-    container_name: backend-vue
+    build: backend/
+    image: backend-rvp:1.0
+    container_name: rvp_backend
     volumes:
-        - cmvue-volume:/build/uploaded
+        - rvp_vue-volume:/build/uploaded
     ports:
       - 8081:8081
     depends_on:
       - database
     networks:
-      - vuenetwork
+      - rvpnetwork
   frontend:
     build: frontend/
-    image: frontend-vue:1.0
-    container_name: frontend-vue
+    image: frontend-rvp:1.0
+    container_name: rvp-frontend
     ports:
       - 80:80
     depends_on:
       - backend
     networks:
-      - vuenetwork
+      - rvpnetwork
 
 networks:
-  vuenetwork:
-    name: vue_workshop
+  rvpnetwork:
+    name: rvpnetwork
     driver: bridge
 
 volumes:
-    cmvue-volume:
+    rvp_vue-volume:
         external: false
-    cmmongo-volume:
+    rvp_mongo-volume:
         external: false    
 
 
