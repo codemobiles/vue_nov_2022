@@ -7,6 +7,8 @@ import { Users } from "./entity/User";
 
 export const AppDataSource = new DataSource({
   type: "mongodb",
+  host: process.env.MONGO_HOST ? process.env.MONGO_HOST : "localhost",
+  port: process.env.MONGO_PORT ? Number(process.env.MONGO_PORT) : 27017,
   database: "demopos",
   synchronize: true,
   logging: false,
