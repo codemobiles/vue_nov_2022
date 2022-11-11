@@ -12,7 +12,9 @@
         <img alt="example" src="@/assets/03-vuejs-login.png" />
       </template>
 
-      <h1 className="text-2xl font-bold pb-3">Login {{isProd ? 'Pro' : "Dev"}}</h1>
+      <h1 className="text-2xl font-bold pb-3">
+        Login {{ isProd ? "Pro" : "Dev" }}
+      </h1>
 
       <a-form
         layout="vertical"
@@ -76,6 +78,8 @@ export default defineComponent({
     LockOutlined,
   },
   setup() {
+    const isProd = import.meta.env.PROD;
+
     const formState: UnwrapRef<FormState> = reactive<User>({
       username: "admin",
       password: "1234",
@@ -103,6 +107,7 @@ export default defineComponent({
       formState,
       handleFinish,
       handleFinishFailed,
+      isProd,
     };
   },
 });
