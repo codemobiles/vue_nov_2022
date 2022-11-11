@@ -75,6 +75,7 @@ interface TransactionState {
   headers: ColumnProps[];
   pagination: any;
   selectedOrder: any;
+  selectedTransactionId: string;
 }
 
 export default defineComponent({
