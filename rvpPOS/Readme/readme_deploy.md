@@ -3,6 +3,7 @@
 # frontend (vue vite)
 
 - yarn build
+- "allowJs": true,
 - fix erro about tsscript ($filters -> filters)
 - running on production or development (import.meta.env.PROD), https://vitejs.dev/guide/env-and-mode.html
 - npx serve -s ./dist
