@@ -12,7 +12,7 @@
         <img alt="example" src="@/assets/03-vuejs-login.png" />
       </template>
 
-      <h1 className="text-2xl font-bold pb-3">Login</h1>
+      <h1 className="text-2xl font-bold pb-3">Login {{isProd ? 'Pro' : "Dev"}}</h1>
 
       <a-form
         layout="vertical"
