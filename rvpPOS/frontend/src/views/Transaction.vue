@@ -25,7 +25,7 @@
             </template>
 
             <template v-if="column.key === 'timestamp'">
-              <span>{{ $filters.formatDate(record.timestamp) }}</span>
+              <span>{{ filters.formatDate(record.timestamp) }}</span>
             </template>
             <template v-if="column.key === 'order_list'">
               <a @click="openOrderLine(record.order_list)">{{
@@ -34,11 +34,11 @@
             </template>
 
             <template v-if="column.key === 'total'">
-              <span>{{ $filters.thousand(record.total) }}</span>
+              <span>{{ filters.thousand(record.total) }}</span>
             </template>
 
             <template v-if="column.key === 'paid'">
-              <span>{{ $filters.thousand(record.paid) }}</span>
+              <span>{{ filters.thousand(record.paid) }}</span>
             </template>
 
             <template v-if="column.key === 'payment_type'">
@@ -51,7 +51,7 @@
       <a-col :span="state.selectedOrder != null ? 12 : 0">
         <ul>
           <li v-for="order in state.selectedOrder" :key="order.product_id">
-            <img :width="50" :src="$filters.fullImageUrl(order.image)" />
+            <img :width="50" :src="filters.fullImageUrl(order.image)" />
             {{ order.name }}, {{ order.price }}
           </li>
         </ul>
@@ -62,6 +62,7 @@
 <script lang="ts">
 import { defineComponent, onMounted, reactive } from "vue";
 import api from "@/services/api";
+import filters from "@/services/filters";
 import type { Transaction } from "@/models/transaction.model";
 
 interface ColumnProps {
@@ -132,6 +133,7 @@ export default defineComponent({
       openOrderLine,
       state,
       customRow,
+      filters,
     };
   },
 });

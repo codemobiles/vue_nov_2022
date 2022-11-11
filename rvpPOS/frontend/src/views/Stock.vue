@@ -33,18 +33,18 @@
           <span>{{ record.product_id }}</span>
         </template>
         <template v-if="column.key === 'image'">
-          <a-image :width="50" :src="$filters.fullImageUrl(record.image)" />
+          <a-image :width="50" :src="filters.fullImageUrl(record.image)" />
         </template>
         <template v-if="column.key === 'name'">
           {{ record.name }}
         </template>
 
         <template v-if="column.key === 'price'">
-          <span>{{ $filters.currency(record.price) }}</span>
+          <span>{{ filters.currency(record.price) }}</span>
         </template>
 
         <template v-if="column.key === 'stock'">
-          <span>{{ $filters.thousand(record.stock) }}</span>
+          <span>{{ filters.thousand(record.stock) }}</span>
         </template>
 
         <template v-else-if="column.key === 'action'">
@@ -79,6 +79,7 @@ import {
   QuestionCircleOutlined,
   EditOutlined,
 } from "@ant-design/icons-vue";
+import filters from "@/services/filters";
 export default defineComponent({
   components: { DeleteOutlined, QuestionCircleOutlined, EditOutlined },
   setup() {
@@ -138,6 +139,7 @@ export default defineComponent({
       state,
       onSearch,
       onConfirmDelete,
+      filters,
     };
   },
 });
