@@ -29,6 +29,7 @@
    "scripts": {
       "start": "ts-node-dev -r dotenv/config  src/index.ts",
       "typeorm": "typeorm-ts-node-commonjs",
-      "build": "tsc && cp *.key .env ecosystem.config.js ./build"
+      "build": "tsc && cp *.key .env ecosystem.config.js ./build",
+      "build-docker": "tsc && cp *.key ./build"
    }
 }
