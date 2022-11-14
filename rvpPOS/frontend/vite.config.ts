@@ -5,9 +5,7 @@ import vue from "@vitejs/plugin-vue";
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  server: {
-    port: 4200,
-  },
+  server: { port: 4200 },
   css: {
     preprocessorOptions: {
       less: {
@@ -15,6 +13,7 @@ export default defineConfig({
           "primary-color": "#1DA57A",
           "link-color": "#1DA57A",
           "border-radius-base": "10px",
+          "table-row-hover-bg": "#1DA57A11",
         },
         javascriptEnabled: true,
       },

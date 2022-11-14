@@ -10,7 +10,13 @@
           :pagination="state.pagination"
           class="ant-table-striped"
           :rowClassName="
-            (record:any, index:number) => (index % 2 === 1 ? 'table-striped' : null)
+            (record:any, index:number) => {
+              if (record.transaction_id == state.selectedTransactionId){
+                return 'table-selected'
+              }else{
+                return (index % 2 === 1 ? 'table-striped' : null)
+              }              
+            }
           "
         >
           <template #bodyCell="{ column, record }">
@@ -142,6 +148,9 @@ export default defineComponent({
 </script>
 <style scoped>
 .ant-table-striped :deep(.table-striped) td {
-  background-color: #fafafa;
+  background-color: #fa0000;
+}
+.table-selected {
+  background-color: #fa0000;
 }
 </style>
