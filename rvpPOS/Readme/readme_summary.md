@@ -56,19 +56,47 @@ app.use(bodyParser.json());
 app.use(cors());
 app.use(express.static(process.env.ROOT_PATH + "/uploaded"));
 ```
+
 - Entity
 - Intro mongo (no sql)
-  + table -> collections
-  + column -> fields
-  + row -> document
+  - table -> collections
+  - column -> fields
+  - row -> document
 
 # Day3
+
+- v-if, v-for
+- setup, ref, reactive, computed, onMounted
 - Stock
 - Http interceptor (Frontned)
 - Backend interceptor (jwt, verify.interceptor.ts)
-- JWT  
-- vscode extension 
-  + connect mongo
-  + 
+- JWT
+- vscode extension
+  - connect mongo
+  - prettier
+- vuex [state, actions, mutation, getter, createLogger]
+- routing guard
 
+# day 4
 
+- Chart workshop
+- Shop workshop
+- slot
+- filter
+- review Payment communication (@ :)
+- deploy backend
+  - yarn build
+  - pm2
+
+# day 5
+
+- production and develop environment
+- deploy fronted
+  - yarn build (fix $router, $filter)
+- docker
+  - image
+  - container
+  - docker-compose (run container)
+  - docker file (build image)
+  - join default network bridge
+  - volumn

@@ -3,6 +3,7 @@
     <a-row>
       <a-col :span="state.selectedOrder == null ? 24 : 12">
         <a-table
+          :scroll="{ x: 1000, y: 500 }"
           :customRow="customRow"
           :columns="state.headers"
           :data-source="state.mDataArray"

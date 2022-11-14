@@ -20,6 +20,7 @@
     </div>
 
     <a-table
+      :scroll="{ x: 1000, y: 500 }"
       :columns="state.headers"
       :data-source="state.mDataArray"
       :pagination="state.pagination"
